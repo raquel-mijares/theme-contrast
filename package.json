@@ -1,0 +1,19 @@
+{
+  "name": "theme-contrast",
+  "version": "0.0.0",
+  "description": "Check WCAG contrast for every theme in a DTCG token file.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}
