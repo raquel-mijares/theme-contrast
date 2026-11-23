@@ -12,3 +12,15 @@ export function contrastRatio(a: Rgb, b: Rgb): number {
   const [lighter, darker] = [relativeLuminance(a), relativeLuminance(b)].sort((x, y) => y - x) as [number, number];
   return (lighter + 0.05) / (darker + 0.05);
 }
+
+export type WcagLevel = "AA" | "AAA";
+export type TextSize = "normal" | "large";
+
+const MINIMUM_RATIO: Record<WcagLevel, Record<TextSize, number>> = {
+  AA: { normal: 4.5, large: 3 },
+  AAA: { normal: 7, large: 4.5 },
+};
+
+export function meetsWcag(ratio: number, level: WcagLevel, size: TextSize = "normal"): boolean {
+  return ratio >= MINIMUM_RATIO[level][size];
+}
