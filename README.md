@@ -7,6 +7,7 @@ Work in progress. Today it can read srgb colors from a token file, follow aliase
 ## Roadmap
 
 - [x] Read DTCG colors and compute WCAG contrast for one pair
+- [x] Pass/fail against WCAG AA and AAA, normal and large text
 - [ ] Expand theme modes with the DTCG resolver
 - [ ] Contrast matrix output
 - [ ] CI exit code
