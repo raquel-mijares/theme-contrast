@@ -1,6 +1,6 @@
 import type { Rgb } from "./contrast.js";
 
-type TokenTree = { [key: string]: unknown };
+export type TokenTree = { [key: string]: unknown };
 
 const ALIAS = /^\{([^{}]+)\}$/;
 
