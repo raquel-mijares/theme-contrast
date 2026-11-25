@@ -23,6 +23,12 @@ describe("resolveColor", () => {
     expect(() => resolveColor(tokens, "color.nope")).toThrow("Token not found: color.nope");
   });
 
+  it("names the alias chain when an alias points to a missing token", () => {
+    expect(() => resolveColor(tokens, "color.muted")).toThrow(
+      "Token not found: color.gone (via color.muted -> color.subtle)",
+    );
+  });
+
   it("fails on a circular alias instead of looping forever", () => {
     expect(() => resolveColor(tokens, "color.loop-a")).toThrow("Circular alias");
   });

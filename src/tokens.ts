@@ -8,13 +8,14 @@ function isRecord(value: unknown): value is TokenTree {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-function findToken(tree: TokenTree, path: string): TokenTree {
+function findToken(tree: TokenTree, path: string, via: string[]): TokenTree {
   let node: unknown = tree;
   for (const key of path.split(".")) {
     node = isRecord(node) ? node[key] : undefined;
   }
   if (!isRecord(node) || !("$value" in node)) {
-    throw new Error(`Token not found: ${path}`);
+    const from = via.length > 0 ? ` (via ${via.join(" -> ")})` : "";
+    throw new Error(`Token not found: ${path}${from}`);
   }
   return node;
 }
@@ -41,7 +42,7 @@ export function resolveColor(tree: TokenTree, path: string, seen: string[] = [])
   if (seen.includes(path)) {
     throw new Error(`Circular alias: ${[...seen, path].join(" -> ")}`);
   }
-  const { $value } = findToken(tree, path);
+  const { $value } = findToken(tree, path, seen);
   const alias = typeof $value === "string" ? ALIAS.exec($value) : null;
   if (alias?.[1]) {
     return resolveColor(tree, alias[1], [...seen, path]);
