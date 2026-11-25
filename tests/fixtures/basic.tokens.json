@@ -7,6 +7,8 @@
     "background": { "$value": "{color.white}" },
     "overlay": { "$value": { "colorSpace": "srgb", "components": [0, 0, 0], "alpha": 0.5 } },
     "loop-a": { "$value": "{color.loop-b}" },
-    "loop-b": { "$value": "{color.loop-a}" }
+    "loop-b": { "$value": "{color.loop-a}" },
+    "muted": { "$value": "{color.subtle}" },
+    "subtle": { "$value": "{color.gone}" }
   }
 }
