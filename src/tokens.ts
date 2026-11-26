@@ -21,6 +21,9 @@ function findToken(tree: TokenTree, path: string, via: string[]): TokenTree {
 }
 
 function toRgb(value: unknown, path: string): Rgb {
+  if (typeof value === "string") {
+    throw new Error(`${path}: "${value}" is a string, but DTCG 2025.10 colors are objects with colorSpace and components`);
+  }
   if (!isRecord(value) || value.colorSpace !== "srgb") {
     throw new Error(`${path}: only srgb colors are supported`);
   }

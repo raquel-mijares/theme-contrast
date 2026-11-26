@@ -9,6 +9,7 @@
     "loop-a": { "$value": "{color.loop-b}" },
     "loop-b": { "$value": "{color.loop-a}" },
     "muted": { "$value": "{color.subtle}" },
-    "subtle": { "$value": "{color.gone}" }
+    "subtle": { "$value": "{color.gone}" },
+    "legacy": { "$value": "#777777" }
   }
 }

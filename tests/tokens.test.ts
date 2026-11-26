@@ -33,6 +33,12 @@ describe("resolveColor", () => {
     expect(() => resolveColor(tokens, "color.loop-a")).toThrow("Circular alias");
   });
 
+  it("explains that a hex string is not a DTCG 2025.10 color", () => {
+    expect(() => resolveColor(tokens, "color.legacy")).toThrow(
+      'color.legacy: "#777777" is a string, but DTCG 2025.10 colors are objects with colorSpace and components',
+    );
+  });
+
   it("refuses translucent colors instead of guessing the backdrop", () => {
     expect(() => resolveColor(tokens, "color.overlay")).toThrow("not supported yet");
   });
