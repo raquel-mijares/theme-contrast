@@ -39,6 +39,14 @@ describe("resolveColor", () => {
     );
   });
 
+  it("names the type when the token is not a color", () => {
+    expect(() => resolveColor(tokens, "spacing.small")).toThrow("spacing.small is a dimension token, not a color");
+  });
+
+  it("names the type when an alias points to a token that is not a color", () => {
+    expect(() => resolveColor(tokens, "color.gap")).toThrow("spacing.small is a dimension token, not a color");
+  });
+
   it("refuses translucent colors instead of guessing the backdrop", () => {
     expect(() => resolveColor(tokens, "color.overlay")).toThrow("not supported yet");
   });
