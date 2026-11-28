@@ -10,6 +10,11 @@
     "loop-b": { "$value": "{color.loop-a}" },
     "muted": { "$value": "{color.subtle}" },
     "subtle": { "$value": "{color.gone}" },
-    "legacy": { "$value": "#777777" }
+    "legacy": { "$value": "#777777" },
+    "gap": { "$value": "{spacing.small}" }
+  },
+  "spacing": {
+    "$type": "dimension",
+    "small": { "$value": { "value": 4, "unit": "px" } }
   }
 }
